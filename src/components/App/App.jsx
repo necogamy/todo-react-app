@@ -9,7 +9,7 @@ import { Completed } from '../Completed/Completed';
 function App() {
     const [list, setList] = useState([]);
 
-    const changeStatus = (el) => {
+    const changeStatus = el => {
         const update = list.map(item => item.key === el.key ? {
             ...item,
             completed: !item.completed
@@ -31,12 +31,12 @@ function App() {
     }
 
 
-    const deleteList = () => {
-
+    const deleteItem = key => {
+        setList(prevList => prevList.filter(el => el.key !== key));
     }
 
     const deleteCompletes = () => {
-
+        setList(prevList => prevList.filter(el => el.completed === false));
     }
 
     return (
@@ -61,7 +61,12 @@ function App() {
                     <Active changeStatus={changeStatus} onSubmit={onSubmit} list={list} />
                 </Route>
                 <Route path='/completed'>
-                    <Completed changeStatus={changeStatus} list={list} />
+                    <Completed 
+                        deleteItem={deleteItem} 
+                        deleteCompletes={deleteCompletes} 
+                        changeStatus={changeStatus} 
+                        list={list} 
+                    />
                 </Route>
             </Switch>
             <p>
