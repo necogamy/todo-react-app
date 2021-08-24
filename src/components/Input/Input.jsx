@@ -9,7 +9,7 @@ export function Input(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.onSubmit(text);
+        if (text != []) props.onSubmit(text);
         setText('');
     }
 
@@ -19,9 +19,11 @@ export function Input(props) {
                 type='text'
                 value={text}
                 onChange={handleChange}
+                placeholder='add details'
             />
             <input 
                 type='submit'
+                value='Add'
             />
         </form>
     )
