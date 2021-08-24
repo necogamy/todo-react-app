@@ -6,6 +6,8 @@ import { Active } from '../Active/Active';
 import { Completed } from '../Completed/Completed';
 
 
+// App component, his parent is a Router
+
 function App() {
     const [list, setList] = useState([]);
 
