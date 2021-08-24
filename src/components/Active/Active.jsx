@@ -11,10 +11,9 @@ export function Active(props) {
                 { active.length > 0 ?
                     active.map(el => {
                         return (
-                            <article className='inline'>
+                            <article key={el.key}  className='inline'>
                                 <input onChange={() => props.changeStatus(el)} type='checkbox' checked={el.completed ? true : false} />
                                 <li 
-                                  key={el.key} 
                                   completed={el.completed}
                                   className={el.completed ? 'completed' : ''}
                                 >
